@@ -4,7 +4,7 @@ The Nexus Web Portal empowers companies with complete control and oversight of t
 
 ## Getting Started
 
-Follow these steps to install and interact with MzazaConnect Dashboard
+Follow these steps to install and interact with  our Dashboard
 # Clone the repository
 ``` sh
 git clone https://github.com/akirachix/Nexus-Frontend.git
