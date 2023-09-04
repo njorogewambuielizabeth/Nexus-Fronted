@@ -1,8 +1,11 @@
 name: Next.js CI/CD
 on:
-  push:
+ push:
     branches:
-      - main
+      - staging  
+  pull_request:
+    branches:
+      - staging
 jobs:
   build:
     runs-on: ubuntu version 20.04
