@@ -1,19 +1,8 @@
 import React from 'react';
 import { FaHome, FaUsers, FaCog, FaSignOutAlt, FaSearch, FaFilter, FaUser } from 'react-icons/fa';
-import TableRow from '@/app/atoms/tableRows';
 
 const Dashboard = () => {
-  const tableData = [
-    {
-      location: 'Kisii County',
-      meterNumber: '1234567890',
-      customer: 'Peris Ndimu',
-      dateInstalled: 'Nov 18, 2023',
-      status: 'Active',
-    },
-  
-  ];
-
+ 
   return (
     <div className="flex h-screen bg-white">
    
@@ -65,50 +54,9 @@ const Dashboard = () => {
           <div className="mt-4 text-lg opacity-70">@2023, Nexus <br/> All rights reserved</div>
         </div>
       </div>
-      <br></br>
-      <br></br>
-     
-      <div className="flex-1 p-4 overflow-y-auto bg-white text-black">
-        <div className="flex items-center justify-between mb-4">
-        
-          <div className="relative w-1/2">
-            <FaSearch className="w-6 h-6 text-blue-600 absolute left-3 top-1/2 transform -translate-y-1/2" />
-            <input type="text" placeholder="Search..." className="border border-gray-300 rounded p-2 text-black bg-gray-100 pl-10 w-full" />
-          </div>
-
-        
-          <div className="flex items-center space-x-2">
-            <FaUser className="w-9 h-6 text-blue-600" />
-          </div>
-        </div>
-
-       
-        <table className="table-auto w-full">
-          <thead>
-            <tr>
-              <th className="px-4 py-2 text-left">Location</th>
-              <th className="px-4 py-2 text-left">Meter Number</th>
-              <th className="px-4 py-2 text-left">Customer</th>
-              <th className="px-4 py-2 text-left">Date Installed</th>
-              <th className="px-4 py-2 text-left">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tableData.map((item, index) => (
-              <TableRow
-                key={index}
-                location={item.location}
-                meterNumber={item.meterNumber}
-                customer={item.customer}
-                dateInstalled={item.dateInstalled}
-                status={item.status}
-              />
-            ))}
-          </tbody>
-        </table>
-
       
-      </div>
+     
+      
     </div>
   );
 };
