@@ -1,7 +1,9 @@
 import Image from 'next/image'
 import React from 'react'
 import Register from './register/page'
-import Login from './login/page'
+
+
+
 
 
 export default function Home() {
@@ -9,7 +11,6 @@ export default function Home() {
     <main>
       <div>
       <Register/>
-      <Login/>
       </div>
     </main>
   )
