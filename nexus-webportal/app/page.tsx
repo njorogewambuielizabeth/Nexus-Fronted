@@ -1,19 +1,17 @@
-import Image from 'next/image'
-import Dashboard from './Components/dashboards'
+import React from 'react'
+import Register from './register/page'
 
 
 
 export default function Home() {
-
-  return (
+  return(
     <main>
-     <Dashboard/>
-    
-
-export default function Home() {
-  return (
-    <main>
-
+      <div>
+        <Register/>
+      </div>
     </main>
   )
 }
+
+
+  
