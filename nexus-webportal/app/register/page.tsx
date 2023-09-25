@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import  Link from "next/link";
-import Footer from "../atom/footer";
+import Link from "next/link";
+import Footer from "../Component/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
@@ -24,16 +24,12 @@ const Register: React.FC = () => {
     confirmPassword: "",
   });
   const [errors, setErrors] = useState<{
-    name?: string;
-    email?: string;
-    phoneNumber?: string;
-    city?: string;
-    password?: string;
     confirmPassword?: string;
   }>({});
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
@@ -46,26 +42,18 @@ const Register: React.FC = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     const newErrors = {} as {
-      name?: string;
-      email?: string;
-      phoneNumber?: string;
-      city?: string;
-      password?: string;
       confirmPassword?: string;
     };
-  
+
     if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = "Passwords do not match";
+      setSuccessMessage(null);
     } else {
-      newErrors.confirmPassword = " "; 
+      setSuccessMessage("You have been successfully registered.");
     }
-  
+
     setErrors(newErrors);
-    if (Object.keys(newErrors).length === 0) {
-      console.log("Form submitted:", formData);
-    }
   };
-  
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -74,7 +62,7 @@ const Register: React.FC = () => {
   const handleTogglePasswordConfirmation = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
-  
+
   return (
     <div className="h-screen bg-gray-200 flex flex-col">
       <div className="mt-10 flex justify-center items-center">
@@ -136,54 +124,49 @@ const Register: React.FC = () => {
                 className="w-full p-3 pr-10 border rounded"
                 required
               />
-             <span
-    className="absolute inset-y-0 right-0 flex items-center pr-2 cursor-pointer"
-    onClick={handleTogglePasswordVisibility}
-  >
-    <FontAwesomeIcon
-      icon={showPassword ? faEye : faEyeSlash}
-      className="text-gray-400 hover:text-gray-600"
-    />
-  </span>
-  </div>
-  <div className="relative mb-4">
-    <input
-    className="w-full p-3 pr-10 border rounded"
-    type={showConfirmPassword ? "text" : "password"}
-    id="confirmPassword"
-    value = {formData.confirmPassword}
-    onChange={handleInputChange}
-    placeholder="Confirm Password"
-  />
-  <span
-    className="absolute inset-y-0 right-0 flex items-center pr-2 cursor-pointer"
-    onClick={handleTogglePasswordConfirmation}
-  >
-    <FontAwesomeIcon
-      icon={showConfirmPassword ? faEye : faEyeSlash}
-      className="text-gray-400 hover:text-gray-600"
-    />
-  </span>
-</div>
+              <span
+                className="absolute inset-y-0 right-0 flex items-center pr-2 cursor-pointer"
+                onClick={handleTogglePasswordVisibility}
+              >
+                <FontAwesomeIcon
+                  icon={showPassword ? faEye : faEyeSlash}
+                  className="text-gray-400 hover:text-gray-600"
+                />
+              </span>
+            </div>
+            <div className="relative mb-4">
+              <input
+                className="w-full p-3 pr-10 border rounded"
+                type={showConfirmPassword ? "text" : "password"}
+                id="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleInputChange}
+                placeholder="Confirm Password"
+              />
+              <span
+                className="absolute inset-y-0 right-0 flex items-center pr-2 cursor-pointer"
+                onClick={handleTogglePasswordConfirmation}
+              >
+                <FontAwesomeIcon
+                  icon={showConfirmPassword ? faEye : faEyeSlash}
+                  className="text-gray-400 hover:text-gray-600"
+                />
+              </span>
+            </div>
           </form>
 
-          {errors.name && (
-            <p className="text-red-500 text-xs">{errors.name}</p>
-          )}
-          {errors.email && (
-            <p className="text-red-500 text-xs">{errors.email}</p>
-          )}
-          {errors.phoneNumber && (
-            <p className="text-red-500 text-xs">{errors.phoneNumber}</p>
-          )}
-          {errors.city && (
-            <p className="text-red-500 text-xs">{errors.city}</p>
-          )}
-          {errors.password && (
-            <p className="text-red-500 text-xs">{errors.password}</p>
-          )}
           {errors.confirmPassword && (
-            <p className="text-red-500 text-xs">{errors.confirmPassword}</p>
+            <p
+              className={`text-xs ${
+                errors.confirmPassword ? "text-red-500" : "text-green-500"
+              }`}
+            >
+              {errors.confirmPassword}
+            </p>
+          )}
+
+          {successMessage && (
+            <p className="text-green-500 text-xs">{successMessage}</p>
           )}
 
           <p className="text-center">
@@ -202,10 +185,11 @@ const Register: React.FC = () => {
           </button>
         </div>
       </div>
-      
-      <Footer/>
+
+      <Footer />
     </div>
   );
 };
 
 export default Register;
+

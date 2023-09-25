@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import  Link from "next/link";
-import Footer from "../atom/footer";
+import Footer from "../Component/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
