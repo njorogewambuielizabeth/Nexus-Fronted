@@ -1,6 +1,10 @@
 "use client"
 import React, { useState } from 'react';
 import { FaHome, FaUsers,FaSignOutAlt, FaFilter } from 'react-icons/fa';
+import SectionWithCards from '../cards';
+import ChartComponent from '../powerGraph';
+import DetailsSection from '../details';
+import SearchBar from '../searchBar';
 
 const Dashboard = () => {
   
@@ -141,5 +145,13 @@ const Dashboard = () => {
     </div>
   );
 };
+<div>
+  <SectionWithCards/>
+  <ChartComponent/>
+  <DetailsSection/>
+ 
+ 
+ 
+</div>
 
 export default Dashboard;
