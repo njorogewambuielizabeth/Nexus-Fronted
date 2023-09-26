@@ -3,8 +3,10 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
 
-
 const ChartComponent = () => {
+  const chartWidth = '850px'; 
+  const chartHeight = '0px'; 
+
   const data = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     datasets: [
@@ -14,11 +16,21 @@ const ChartComponent = () => {
         borderColor: '#2B39BD',
         borderWidth: 1,
         data: [100, 20, 30, 10, 50, 60, 70, 40, 70, 100, 50, 12],
+        classname:"text-1xl ml-10"
+        
       },
     ],
   };
 
   const options = {
+    plugins: {
+      legend: {
+        display: true,
+        position: 'top',
+      },
+     
+    },
+   
     scales: {
       x: {
         title: {
@@ -36,32 +48,14 @@ const ChartComponent = () => {
     },
   };
 
-  const containerStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center', 
-    justifyContent: 'center', 
-    width: '45%',
-    height: '20px',
-    margin: '0 auto',
-    marginTop: '9%',
-  
-  };
-
-  const titleStyles = {
-    fontSize: '1rem', 
-    fontWeight: 'bold',
-    marginTop: '1px', 
-  };
-
   return (
-    <div style={containerStyles}>
-      <h2 style={titleStyles}>Monthly Power Consumption</h2>
-      <Bar data={data} options={options} />
+    <div className="flex flex-col items-center justify-center mt-[-5%] mr-[-6%]">
+      <h2 className="text-1xl font-bold mb-4">Monthly Power Consumption</h2>
+      <div style={{ width: chartWidth, height: chartHeight }}>
+        <Bar data={data} options={options} />
+      </div>
     </div>
   );
 };
-
-
 
 export default ChartComponent;
