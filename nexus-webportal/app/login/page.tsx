@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import  Link from "next/link";
-import Footer from "../Component/Footer";
+import Footer from "../components/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
@@ -10,22 +10,16 @@ interface FormData {
   password: string;
   
 }
-
 const Login: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
-
   });
   const [errors, setErrors] = useState<{
     email?: string;
-    password?: string;
-
+    password?: string
   }>({});
-
   const [showPassword, setShowPassword] = useState(false);
-
-
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     setFormData({
