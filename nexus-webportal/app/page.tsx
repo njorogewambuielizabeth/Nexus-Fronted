@@ -1,16 +1,12 @@
-
-
-import Meter from "./Components/Meter";
-import Dashboard from "./Components/SideBar";
-
-
+import SideBar from "./Components/SideBar";
+import Meter from "./meter/page";
 
 export default function Home() {
 
   return (
     <main>
-      < Dashboard />
-      < Meter />
+    
+    
     </main>
   )
 }

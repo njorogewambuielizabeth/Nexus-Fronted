@@ -74,40 +74,40 @@ const Meter = () => {
 
   return (
     <div>
-      <div className="py-8 " style={{ marginTop: '-53.3%' }}>
-        <div className="container mx-auto flex flex-wrap justify-center" style={{ top: '-90%' }}>
-          <div className="w-64 bg-blue-700 shadow-lg mr-20 rounded-lg m-2 p-6 text-center relative">
-            <h3 className="text-2xl font-semibold text-white">Power Consumption</h3>
-            <p className="text-3xl font-bold text-white mt-2">250 kW</p>
+      <div className="py-4 ml-[25%]  " >
+        <div className="container mx-auto  space-x-[14px] flex flex-wrap justify-center" >
+          <div className="w-64 bg-blue-700 shadow-lg  rounded-lg m-2 p-6 text-center relative">
+            <h3 className="text-2xl text-white">Customers</h3>
+            <p className="text-2xl f text-white mt-2">2500</p>
           </div>
-          <div className="w-64 bg-blue-700 ml-20 shadow-lg rounded-lg m-2 p-6 text-center relative">
-            <h3 className="text-2xl font-semibold text-white">Meters</h3>
-            <p className="text-3xl font-bold text-white mt-2">30</p>
+          <div className="w-64 bg-blue-700  shadow-lg rounded-lg m-2 p-6 text-center relative">
+            <h3 className="text-2xl  text-white">Meters</h3>
+            <p className="text-3xl  text-white mt-2">30</p>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col items-center justify-center w-2/4 mx-auto" style={{ overflowY: 'scroll' }}>
+      <div className="flex flex-col items-center justify-center w-[90%] mx-auto ml-[20%]">
         <h2 className="text-xl font-bold mb-4 mt-3"></h2>
         <Bar data={data} options={options} />
       </div>
 
-      <div className="details-section ml-80 " style={{ maxHeight: '100vh' }}>
-        <h2 className="text-3xl font-bold mb-0 py-2" style={{ marginLeft: 190 }}></h2>
+      <div className="details-section ml-80 " >
+        <h2 className="text-3xl font-bold mb-0 py-2" ></h2>
         <table className="w-full">
           <thead>
             <tr>
-              <th className="text-left pl-40 py-3">Customer</th>
-              <th className="text py-3"><p className="-ml-96 py-4">Meter Number</p></th>
-              <th className="text-left py-3 pr-40">Status</th>
+              <th className="text-left -pl-40 py-3">Customer</th>
+              <th className="text-left pl-60 py-3 pl-30"><p >Meter Number</p></th>
+              <th className="text py-3 pl-80">Status</th>
             </tr>
           </thead>
           <tbody>
             {displayedCustomers.map((customer, index) => (
               <tr key={index}>
-                <td className="py-2 pl-40">{customer.name}</td>
-                <td className="py-2 pr-40">{customer.meterNumber}</td>
-                <td className="py-2 flex items-center">
+                <td className="py-2pl-40 ">{customer.name}</td>
+                <td className="py-2 pl-60">{customer.meterNumber}</td>
+                <td className="py-2 pl-80 flex items-center">
                   <div
                     className={`w-4 h-4 rounded-full ${customer.status === 'Inactive' ? 'bg-red-600' : 'bg-green-500'}`}
                   ></div>
@@ -120,7 +120,7 @@ const Meter = () => {
           </tbody>
         </table>
 
-        <div className="pagination-controls mt-5 flex justify-end space-x-4 mr-10 mb-20">
+        <div className="pagination-controls mt-5 flex justify-end space-x-4 mr-10 mb-1">
         <button
           onClick={goToPreviousPage}
           disabled={currentPage === 1}
