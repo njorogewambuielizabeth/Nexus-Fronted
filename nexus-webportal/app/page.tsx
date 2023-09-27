@@ -1,19 +1,11 @@
 import Image from 'next/image'
-import Dashboard from './Components/Home'
-
-
-
-
-
-
+import Overview from './Components/Overview'
 
 export default function Home() {
 
   return (
     <main>
-    <Dashboard/>
-   
-    
+    <Overview/>
     </main>
   )
 }

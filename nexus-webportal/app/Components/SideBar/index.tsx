@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { stringify } from 'querystring';
 
 
-const sideBar = () => {
+const SideBar = () => {
   const [activeItem, setActiveItem] = useState<string | null>('dashboard');
 
   const handleItemClick = (item: string | null) => {
@@ -118,4 +118,4 @@ const sideBar = () => {
   );
 };
 
-export default sideBar;
+export default SideBar;

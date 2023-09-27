@@ -3,7 +3,7 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
 
-const Dashboard = () => {
+const Overview = () => {
   const chartWidth = '850px'; 
   const chartHeight = '0px'; 
 
@@ -117,4 +117,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Overview;
