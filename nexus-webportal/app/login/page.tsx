@@ -4,11 +4,9 @@ import  Link from "next/link";
 import Footer from "../components/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-
 interface FormData {
   email: string;
   password: string;
-  
 }
 const Login: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -27,20 +25,15 @@ const Login: React.FC = () => {
       [id]: value,
     });
   };
-
-
   const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-  
   return (
     <div className="bg-gray-200">
       <div className="h-screen  flex flex-col">
-         
        <div className="flex-1 mt-20 flex justify-center items-center">
           <div className="bg-white w-1/4 p-9 mb-20 rounded shadow-md">
           <img className="w-50 h-20 mx-auto ml-16" src="./niu.png" alt="Logo" /><br/>
-
             <p className="justify-center items-center flex">We are excited to see you again</p>
                 <br/>
           <br />
@@ -52,8 +45,7 @@ const Login: React.FC = () => {
               value={formData.email}
               onChange={handleInputChange}
               className="w-full mb-4 p-3 border rounded"
-              required
-            />
+              required/>
             <div className="mb-4 flex justify-center">
           </div>
             <div className="mb-4 flex relative">
@@ -64,22 +56,17 @@ const Login: React.FC = () => {
                 value={formData.password}
                 onChange={handleInputChange}
                 className="w-full p-3 pr-10 border rounded"
-                required
-              />
+                required/>
              <span
     className="absolute inset-y-0 right-0 flex items-center pr-2 cursor-pointer"
-    onClick={handleTogglePasswordVisibility}
-  >
+    onClick={handleTogglePasswordVisibility}>
     <FontAwesomeIcon
       icon={showPassword ? faEye : faEyeSlash}
       className="text-gray-400 hover:text-gray-600"
     />
   </span>
   <br/>
-
-
             </div>
-   
           </form>
           {errors.email && (
             <p className="text-red-500 text-xs">{errors.email}</p>
@@ -91,11 +78,9 @@ const Login: React.FC = () => {
           <br />
           <p className="text-center">Don't have an account? <Link className="text-blue-500" href="/register">Sign Up</Link></p>
            <br/>
-           
             <button
   className="w-1/2 bg-blue-800 flex justify-center text-white p-3 rounded-full hover:bg-blue-700 text-xl font-bold mx-auto"
-  type="submit"
->Login
+  type="submit">Login
 </button>
         </div>
       </div>
@@ -105,6 +90,5 @@ const Login: React.FC = () => {
     </div>
   );
 };
-
 export default Login;
 

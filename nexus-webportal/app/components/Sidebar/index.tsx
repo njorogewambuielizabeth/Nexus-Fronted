@@ -1,28 +1,39 @@
 "use client"
-import React, { useState,useEffect } from 'react';
-import { FaHome, FaUsers,FaSignOutAlt, FaFilter } from 'react-icons/fa';
-import CustomersList from '../../customers/page';
+import React, { useState, useEffect } from 'react';
+import { FaHome, FaUsers, FaSignOutAlt, FaFilter } from 'react-icons/fa';
 import Link from 'next/link';
-import { stringify } from 'querystring';
-
 
 const Dashboard = () => {
-  const [activeItem, setActiveItem] = useState<string | null>('customers'); // Initialize with 'customers'
+  const [activeItem, setActiveItem] = useState<string | null>('dashboard');
 
-  const handleItemClick = (item: string | null) => {
-    setActiveItem(item as string | null);
+  useEffect(() => {
+    const pathname = window.location.pathname;
+    if (pathname === '/') {
+      setActiveItem('dashboard');
+    } else if (pathname === '/customers') {
+      setActiveItem('customers');
+    } else if (pathname === '/meter') {
+      setActiveItem('meter');
+    } else if (pathname === '/logout') {
+      setActiveItem('logout');
+    }
+  }, []);
+
+  const handleItemClick = (item: string) => {
+    setActiveItem(item);
   };
+
   return (
     <div className="h-screen flex-col lg:flex-row bg-white">
       <div className="w-64 h-full bg-blue-700 text-white p-8 transform lg:transform-none lg:translate-x-0 transition-transform duration-300 ease-in-out">
         <div className="flex justify-between items-center mb-10">
-          <img src="images/logo.png" alt="Logo" className="w-35 my-2" />
+          <img src="/images/logo.png" alt="Logo" className="w-35 my-2" />
         </div>
         <hr className="my-10" />
         <div className="space-y-10">
           <div
-            className={`menu-item flex items-center space-x-6 p-2 rounded-lg  ${
-              activeItem === 'dashboard' ? 'bg-blue-600 text-blue-100' : 'hover:bg-blue-600 hover:text-blue-100'
+            className={`menu-item flex items-center space-x-6 p-2 rounded-lg cursor-pointer ${
+              activeItem === 'dashboard' ? 'bg-blue-600 text-blue-100' : ''
             }`}
             onClick={() => handleItemClick('dashboard')}
           >
@@ -32,30 +43,26 @@ const Dashboard = () => {
               }`}
             >
               <FaHome
-                className={`w-6 h-6 ${
-                  activeItem === 'dashboard' ? 'text-blue' : 'text-blue'
-                } hover:text-blue-100`}
+                className={`w-6 h-6 ${activeItem === 'dashboard' ? 'text-blue' : 'text-blue'}`}
               />
             </div>
-            <Link href="/dashboard">
+            <Link href="/">
               <span className="font-bold text-lg">Dashboard</span>
             </Link>
           </div>
-
           <div
-            className={`menu-item flex items-center space-x-6 p-2 rounded-lg mb-8 ${
-              activeItem === 'customers' ? 'bg-blue-600 text-white' : 'hover:bg-blue-600 hover:text-blue-100'
+            className={`menu-item flex items-center space-x-6 p-2 rounded-lg cursor-pointer ${
+              activeItem === 'customers' ? 'bg-blue-600 text-white' : ''
             }`}
             onClick={() => handleItemClick('customers')}
           >
             <div
               className={`w-8 h-8 text-blue mt-1 flex items-center justify-center ${
                 activeItem === 'customers' ? 'bg-blue-600 rounded-md' : 'rounded-md'
-              }`}>
+              }`}
+            >
               <FaUsers
-                className={`w-6 h-6 ${
-                  activeItem === 'customers' ? 'text-white' : 'text-blue'
-                } hover:text-blue-100`}
+                className={`w-6 h-6 ${activeItem === 'customers' ? 'text-white' : 'text-blue'}`}
               />
             </div>
             <Link href="/customers">
@@ -63,8 +70,8 @@ const Dashboard = () => {
             </Link>
           </div>
           <div
-            className={`menu-item flex items-center space-x-6 p-2 rounded-lg  ${
-              activeItem === 'meter' ? 'bg-blue-600 text-white' : 'hover:bg-blue-600 hover:text-blue-100'
+            className={`menu-item flex items-center space-x-6 p-2 rounded-lg cursor-pointer ${
+              activeItem === 'meter' ? 'bg-blue-600 text-white' : ''
             }`}
             onClick={() => handleItemClick('meter')}
           >
@@ -74,12 +81,12 @@ const Dashboard = () => {
               }`}
             >
               <FaFilter
-                className={`w-8 h-5 ${
-                  activeItem === 'meter' ? 'text-white' : 'text-blue'
-                } hover:text-blue-100`}
+                className={`w-8 h-5 ${activeItem === 'meter' ? 'text-white' : 'text-blue'}`}
               />
             </div>
-            <span className="font-bold text-lg ">Meter</span>
+            <Link href="/meter">
+              <span className="font-bold text-lg">Meter</span>
+            </Link>
           </div>
         </div>
         <div className="mb-60"></div>
@@ -87,8 +94,8 @@ const Dashboard = () => {
           <hr className="my-10" />
           <div className="mb-4"></div>
           <div
-            className={`menu-item flex items-center space-x-6 p-2 rounded-lg mb-4 ${
-              activeItem === 'logout' ? 'bg-blue-600 text-white' : 'hover:bg-blue-600 hover:text-blue-100'
+            className={`menu-item flex items-center space-x-6 p-2 rounded-lg cursor-pointer ${
+              activeItem === 'logout' ? 'bg-blue-600 text-white' : ''
             }`}
             onClick={() => handleItemClick('logout')}
           >
@@ -98,9 +105,7 @@ const Dashboard = () => {
               }`}
             >
               <FaSignOutAlt
-                className={`w-8 h-5 ${
-                  activeItem === 'logout' ? 'text-white' : 'text-blue'
-                } hover:text-blue-100`}
+                className={`w-8 h-5 ${activeItem === 'logout' ? 'text-white' : 'text-blue'}`}
               />
             </div>
             <span className="font-bold text-lg">Logout</span>
@@ -110,9 +115,7 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="flex-grow bg-white">
-        <div>
-          {/* <CustomersList /> */}
-        </div>
+        <div></div>
       </div>
     </div>
   );

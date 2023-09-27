@@ -1,6 +1,4 @@
 import React from "react";
-
-
 const Footer = () =>{
     return(
   <div className="mt-10 flex-2" >
@@ -8,7 +6,7 @@ const Footer = () =>{
   <p className="text-xl">&copy; 2023, Nexus</p>
   <p className="text-xl">All rights reserved</p>
 </div>
-        </div>
+</div>
     )
 }
 export default Footer;
