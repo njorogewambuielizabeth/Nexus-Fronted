@@ -1,12 +1,12 @@
 "use client"
 import React, { useState,useEffect } from 'react';
 import { FaHome, FaUsers,FaSignOutAlt, FaFilter } from 'react-icons/fa';
-import SectionWithCards from '@/app/dashboard/page';
+import SectionWithCards from '@/app/dashboard';
 import Link from 'next/link';
 import { stringify } from 'querystring';
 
 
-const Dashboard = () => {
+const sideBar = () => {
   const [activeItem, setActiveItem] = useState<string | null>('dashboard');
 
   const handleItemClick = (item: string | null) => {
@@ -37,9 +37,9 @@ const Dashboard = () => {
                 } hover:text-blue-100`}
               />
             </div>
-            <Link href="/dashboard">
+         
               <span className="font-bold text-lg">Dashboard</span>
-            </Link>
+           
           </div>
 
           <div
@@ -118,4 +118,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default sideBar;

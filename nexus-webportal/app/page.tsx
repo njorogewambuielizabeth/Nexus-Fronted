@@ -1,6 +1,5 @@
 import Image from 'next/image'
-
-import SectionWithCards from './dashboard/page'
+import Dashboard from './Components/Home'
 
 
 
@@ -12,8 +11,8 @@ export default function Home() {
 
   return (
     <main>
-    
-     <SectionWithCards/>
+    <Dashboard/>
+   
     
     </main>
   )
