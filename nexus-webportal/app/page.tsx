@@ -1,7 +1,7 @@
 
 
 import Meter from "./Components/Meter";
-import Dashboard from "./Components/dashboards";
+import Dashboard from "./Components/SideBar";
 
 
 
