@@ -25,7 +25,7 @@ const Overview = () => {
     plugins: {
       legend: {
         display: true,
-        position: 'top',
+        position: 'top' as 'top',
       },
      
     },
