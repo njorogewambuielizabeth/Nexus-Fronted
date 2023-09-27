@@ -1,14 +1,13 @@
-
 "use client"
 import React, { useState,useEffect } from 'react';
 import { FaHome, FaUsers,FaSignOutAlt, FaFilter } from 'react-icons/fa';
-
+import Overview from '../Overview';
 import Link from 'next/link';
-
+import { stringify } from 'querystring';
 
 
 const SideBar = () => {
-  const [activeItem, setActiveItem] = useState<string | null>('meter'); 
+  const [activeItem, setActiveItem] = useState<string | null>('dashboard');
 
   const handleItemClick = (item: string | null) => {
     setActiveItem(item as string | null);
@@ -38,9 +37,9 @@ const SideBar = () => {
                 } hover:text-blue-100`}
               />
             </div>
-            <Link href="/dashboard">
+         
               <span className="font-bold text-lg">Dashboard</span>
-            </Link>
+           
           </div>
 
           <div
@@ -80,9 +79,7 @@ const SideBar = () => {
                 } hover:text-blue-100`}
               />
             </div>
-            <Link href="/meter">
             <span className="font-bold text-lg ">Meter</span>
-            </Link>
           </div>
         </div>
         <div className="mb-60"></div>
@@ -114,7 +111,7 @@ const SideBar = () => {
       </div>
       <div className="flex-grow bg-white">
         <div>
-          
+         
         </div>
       </div>
     </div>
