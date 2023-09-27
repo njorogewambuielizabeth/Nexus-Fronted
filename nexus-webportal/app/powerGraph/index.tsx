@@ -17,7 +17,6 @@ const ChartComponent = () => {
         borderWidth: 1,
         data: [100, 20, 30, 10, 50, 60, 70, 40, 70, 100, 50, 12],
         classname:"text-1xl ml-10"
-        
       },
     ],
   };
@@ -30,7 +29,6 @@ const ChartComponent = () => {
       },
      
     },
-   
     scales: {
       x: {
         title: {

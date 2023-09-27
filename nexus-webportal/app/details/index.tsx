@@ -9,7 +9,6 @@ const DetailsSection = () => {
     { name: 'Mary Apiu', meterNumber: '98765', status: 'stable' },
   
   ];
-
   return (
     <div className="details-section w-full mt-[44%] ml-[12%]">
       <h2 className="text-2xl font-bold mb-3 ">Details</h2>

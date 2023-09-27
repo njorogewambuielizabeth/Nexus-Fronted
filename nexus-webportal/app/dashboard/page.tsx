@@ -6,7 +6,6 @@ import DetailsSection from '../details';
 
 const SectionWithCards = () => {
   return (
-    
     <div className="py-1 ">
       <div className="container mx-auto flex flex-col items-center">
         <h2 className="text-3xl font-bold text-black mb-2 mt-[2%] ml-[-61%]">Overview</h2>
