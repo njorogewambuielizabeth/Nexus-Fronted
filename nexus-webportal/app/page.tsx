@@ -1,19 +1,21 @@
 
-import Image from 'next/image'
-import Overview from './Components/Overview'
+import React from 'react'
 import Register from './register/page'
-import Meter from './meter/page'
+import Meter from './meter/page';
+import Dashboard from "./Components/SideBar";
+import Overview from './Components/Overview';
+
 
 export default function Home() {
 
   return (
     <main>
       <div>
-    <Overview/>
-    <Meter/>
+  
+   
+      < Meter />
      
       </div>
-
     </main>
   )
 }
