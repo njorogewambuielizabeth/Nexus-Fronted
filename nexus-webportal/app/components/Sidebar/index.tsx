@@ -2,10 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { FaHome, FaUsers, FaSignOutAlt, FaFilter } from 'react-icons/fa';
 import Link from 'next/link';
-
-const Dashboard = () => {
+const SideBar = () => {
   const [activeItem, setActiveItem] = useState<string | null>('dashboard');
-
   useEffect(() => {
     const pathname = window.location.pathname;
     if (pathname === '/') {
@@ -18,11 +16,9 @@ const Dashboard = () => {
       setActiveItem('logout');
     }
   }, []);
-
   const handleItemClick = (item: string) => {
     setActiveItem(item);
   };
-
   return (
     <div className="h-screen flex-col lg:flex-row bg-white">
       <div className="w-64 h-full bg-blue-700 text-white p-8 transform lg:transform-none lg:translate-x-0 transition-transform duration-300 ease-in-out">
@@ -120,5 +116,4 @@ const Dashboard = () => {
     </div>
   );
 };
-
-export default Dashboard;
+export default SideBar;

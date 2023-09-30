@@ -1,10 +1,11 @@
 'use client'
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
-import CustomerData from './table-data.json'
-// import { BiCaretDown } from 'react-icons/bi';
+import useGetUsers from '../hooks/useGetUser';
 
 const CustomersList = () => {
+  const { customers } = useGetUsers();
+
   const [filter, setFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -12,18 +13,21 @@ const CustomersList = () => {
     setFilter(selectedFilter);
   };
 
-  const filteredData = CustomerData.filter((item) => {
-    const matchesSearch = item.Name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.CompanyName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.Location.toLowerCase().includes(searchQuery.toLowerCase());
-    if (filter === 'active' && item.Status.toLowerCase() === 'active') {
-      return matchesSearch;
-    }
-    if (filter === 'inactive' && item.Status.toLowerCase() === 'inactive') {
-      return matchesSearch;
-    }
+  const filteredData = customers.filter((item) => {
+    const matchesSearch =
+      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.company_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.phonenumber.toLowerCase().includes(searchQuery.toLowerCase());
+
     if (filter === 'all') {
       return matchesSearch;
+    } else if (filter === 'company') {
+      return item.company_name.toLowerCase().includes(searchQuery.toLowerCase());
+    } else if (filter === 'location') {
+      return item.location.toLowerCase().includes(searchQuery.toLowerCase());
+    } else if (filter === 'phonenumber') {
+      return item.phonenumber.toLowerCase().includes(searchQuery.toLowerCase());
     }
     return false;
   });
@@ -44,7 +48,7 @@ const CustomersList = () => {
           </div>
           <h1 className="text-3xl font-bold my-2 px-4">Customers</h1>
           <h1 className="text-2xl font-semibold text-blue-600 my-4 px-4">
-            {`${filter === 'active' ? 'Active' : filter === 'inactive' ? 'Inactive' : 'ALL'}(${filteredData.length})`}
+            {`${filter === 'all' ? 'All' : filter}(${filteredData.length})`}
           </h1>
           <div className="mb-4 px-4">
             <div className="relative inline-flex">
@@ -54,8 +58,9 @@ const CustomersList = () => {
                 value={filter}
               >
                 <option value="all">All</option>
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
+                <option value="company">Company</option>
+                <option value="location">Location</option>
+                <option value="phonenumber">Phone Number</option>
               </select>
             </div>
           </div>
@@ -64,30 +69,22 @@ const CustomersList = () => {
           <table className="table-auto w-[1200px] border-collapse">
             <thead>
               <tr>
-                <th className="px-4 py-2 text-left">Name</th>
+                <th className="px-4 py-2 text-left">Customer</th>
                 <th className="px-4 py-2 text-left">Company Name</th>
-                <th className="px-4 py-2 text-left">Meter Number</th>
+                <th className="px-4 py-2 text-left">Phone Number</th>
                 <th className="px-4 py-2 text-left">Location</th>
-                <th className="px-4 py-2 text-left">Status</th>
               </tr>
             </thead>
             <tbody>
               {filteredData.map((item, index) => (
-                <tr key={index} className={item.Name.toLowerCase().includes('customer') ? 'bg-blue-600 text-white' : ''}>
-                  <td className="px-4 py-2 text-left text-gray-700">{item.Name}</td>
-                  <td className="px-4 py-2 text-left text-gray-700">{item.CompanyName}</td>
-                  <td className="px-4 py-2 text-left text-gray-700">{item.MeterNumber}</td>
-                  <td className="px-4 py-2 text-left text-gray-700">{item.Location}</td>
-                  <td className="px-4 py-2 text-left">
-                    <span
-                      className={`w-4 h-4 rounded-full inline-block mr-2 ${
-                        item.Status === 'active' ? 'bg-green-500' : 'bg-red-500'
-                      } border-black`}
-                    ></span>
-                    <span className={item.Status === 'active' ? 'text-green-500' : 'text-red-500'}>
-                      {item.Status}
-                    </span>
-                  </td>
+                <tr
+                  key={index}
+                  className={item.name.toLowerCase().includes('customer') ? 'bg-blue-600 text-white' : ''}
+                >
+                  <td className="px-4 py-2 text-left text-gray-700">{item.name}</td>
+                  <td className="px-4 py-2 text-left text-gray-700">{item.company_name}</td>
+                  <td className="px-4 py-2 text-left text-gray-700">{item.phonenumber}</td>
+                  <td className="px-4 py-2 text-left text-gray-700">{item.location}</td>
                 </tr>
               ))}
             </tbody>
