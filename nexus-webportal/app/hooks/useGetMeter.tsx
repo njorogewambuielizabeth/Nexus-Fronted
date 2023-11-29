@@ -2,6 +2,7 @@ import { getMeters } from "../utilities/utils";
 import { useEffect, useState } from "react";
 
 interface MetersData {
+    year: any;
     id: number;
     meter_serial_number: string;
     current_reading: string;
